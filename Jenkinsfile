@@ -30,8 +30,6 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat 'C:\\Users\\aaron\\AppData\\Roaming\\npm\\newman.cmd run tests/tests.json'
-    }
-}
             }
         }
 
@@ -43,7 +41,7 @@ pipeline {
                 bat 'echo POST /addNew >> README.txt'
                 bat 'echo DELETE /deleteOne?product_id=int >> README.txt'
                 bat 'echo GET /startsWith?letter=str >> README.txt'
-                bat 'echo GET /paginate?start_id=int&end_id=int >> README.txt'
+                bat 'echo GET /paginate?start_id=int >> README.txt'
                 bat 'echo GET /convert?product_id=int >> README.txt'
                 bat 'echo FastAPI docs: https://fastapi.tiangolo.com/ >> README.txt'
             }
@@ -65,9 +63,7 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline finished!'
+            echo "Pipeline finished!"
         }
     }
 }
-
-
