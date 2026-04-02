@@ -22,10 +22,12 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                bat 'docker stop %CONTAINER_NAME% || echo Container not running'
-                bat 'docker rm %CONTAINER_NAME% || echo Container not found'
-                bat 'docker run -d --name %CONTAINER_NAME% -p 8000:8000 --env-file .env %IMAGE_NAME%'
-                bat 'ping -n 6 127.0.0.1 > nul'
+                bat '''
+                    docker stop %CONTAINER_NAME% 2>nul
+                    docker rm %CONTAINER_NAME% 2>nul
+                    docker run -d --name %CONTAINER_NAME% -p 8000:8000 --env-file .env %IMAGE_NAME%
+                    ping -n 6 127.0.0.1 > nul
+                '''
             }
         }
 
