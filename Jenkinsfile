@@ -29,7 +29,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'newman run tests/tests.json'
+                bat 'C:\\Users\\aaron\\AppData\\Roaming\\npm\\newman.cmd run tests/tests.json'
+    }
+}
             }
         }
 
