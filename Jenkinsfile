@@ -56,8 +56,7 @@ pipeline {
 
         stage('Create Zip') {
             steps {
-                bat 'powershell Compress-Archive -Path . -DestinationPath complete-%DATE:~10,4%%DATE:~4,2%%DATE:~7,2%.zip -Force'
-            }
+                bat 'powershell -Command "Compress-Archive -Path . -DestinationPath complete-$(Get-Date -Format \'yyyyMMdd-HHmm\').zip -Force"'
         }
     }
 
